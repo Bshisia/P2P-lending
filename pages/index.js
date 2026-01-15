@@ -7,6 +7,7 @@ export default function Home() {
   const [loans, setLoans] = useState([]);
   const [filteredLoans, setFilteredLoans] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -70,7 +71,12 @@ export default function Home() {
       <nav className="navbar">
         <div className="container">
           <div className="logo">LendConnect</div>
-          <div className="nav-menu">
+          <button className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
             <a href="#loans">Loans</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
